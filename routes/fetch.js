@@ -4,7 +4,7 @@ var router = express.Router();
 
 const API_KEY ='2ca5b453b28dde9492447338ccffaea2';
 
-async function fetchProvince(url, apiKey, options = {}){
+async function fetchLocation(url, apiKey, options = {}){
     if(apiKey){
         options.headers = {
             ...options.headers,
@@ -24,9 +24,18 @@ async function fetchProvince(url, apiKey, options = {}){
     }
 }
 
-router.get('/', async (req, res) => {
+router.get('/province', async (req, res) => {
     try{
-        const data = await fetchProvince('https://pro.rajaongkir.com/api/province', API_KEY);
+        const data = await fetchLocation('https://pro.rajaongkir.com/api/province', API_KEY);
+        res.json(data);
+    }catch (error){
+        res.status(500).json({error : error.message});
+    }
+})
+
+router.get('/city', async (req, res) => {
+    try{
+        const data = await fetchLocation('https://pro.rajaongkir.com/api/city', API_KEY);
         res.json(data);
     }catch (error){
         res.status(500).json({error : error.message});

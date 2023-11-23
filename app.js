@@ -19,7 +19,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/provinces', provincesRouter);
-app.use('/fetch/province', fetchRouter);
+app.use('/fetch', fetchRouter);
+
 
 
 module.exports = app;
