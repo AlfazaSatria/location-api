@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Province {
+  id Int @id @default(autoincrement())
+  provinceId String @db.VarChar(255)
+  name String @db.VarChar(255)
+}
+
+model City {
+  id Int @id @default(autoincrement())
+  cityId String @db.VarChar(255)
+  provinceId String @db.VarChar(255)
+  provinceName String @db.VarChar(255)
+  type String @db.VarChar(255)
+  name String @db.VarChar(255)
+  postalCode String @db.VarChar(255)
+}
+
+model Subdistrict {
+  id Int @id @default(autoincrement())
+  subdistrictId String @db.VarChar(255)
+  provinceId String @db.VarChar(255)
+  provinceName String @db.VarChar(255)
+  cityId String @db.VarChar(255)
+  cityName String @db.VarChar(255)
+  type String @db.VarChar(255)
+  subdistrictName String @db.VarChar(255)
+}
+
