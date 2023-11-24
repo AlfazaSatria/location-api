@@ -50,4 +50,21 @@ router.get('/city', async (req, res) => {
     }
 })
 
+router.get('/subdistrict', async (req,res) => {
+    try{
+        const {id, city} = req.query;
+        let url ='https://pro.rajaongkir.com/api/subdistrict';
+        const queryParams = new URLSearchParams();
+        if (id) queryParams.append('id', id);
+        if (city) queryParams.append('city', city);
+        if ([...queryParams].length) url += `?${queryParams}`;
+
+        const data = await fetchLocation(url, API_KEY);
+
+        res.json(data);
+    }catch(error) {
+        res.status(500).json({ error: error.message});
+    }
+})
+
 module.exports = router;
