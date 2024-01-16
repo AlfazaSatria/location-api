@@ -7,7 +7,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var provincesRouter = require('./routes/province')
 var fetchRouter = require('./routes/fetch');
-var saveRouter = require('./routes/save-fetch')
+
 
 var app = express();
 
@@ -21,7 +21,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/provinces', provincesRouter);
 app.use('/fetch', fetchRouter);
-app.use('/save', saveRouter);
+
 
 
 

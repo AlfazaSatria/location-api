@@ -67,4 +67,4 @@ router.get('/subdistrict', async (req,res) => {
     }
 })
 
-module.exports = {router, fetchLocation};
+module.exports = router;
